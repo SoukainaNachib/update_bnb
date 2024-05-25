@@ -5,6 +5,12 @@ this module define a class to manage file storage for hbnb clone
 
 import json
 from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.review import Review
+from models.place import Place
+from models.amenity import Amenity
 
 class FileStorage:
     """
@@ -42,6 +48,16 @@ class FileStorage:
         """
         Deserializes the JSON file to __objects.
         """
+        current_classes = {
+            'BaseModel' : BaseModel,
+            'user' : User,
+            'City' : City,
+            'State' :  State,
+            'Place' : Place,
+            'Review' : Review,
+            'Amenity': Amenity
+        }
+
         try:
             with open(FileStorage.__file__path, 'r') as file:
                 obj_dict = json.load(file)
